@@ -36,3 +36,12 @@
   > 4. Ensemble Defenses 
 
 相关具体实现与内容有待进一步研究
+
+---
+* <strong> 一个output defences的方法（角度挺新颖的） </strong>
+参考文献：[Defending LLMs against Jailbreaking Attacks via Backtranslation](https://arxiv.org/abs/2402.16459)  
+简单描述一下其防护方法是：将用户的原始prompt输入大模型，得到的回答经过回译(Backtranslation：就是根据回答猜问题)得到新的prompt，再用这个prompt获取答案，由于此时的prompt因为回译过一遍，就大概率会展现原有的隐藏的恶意，使模型依赖本身的检测拒绝恶意暴露的prompt,同时也拒绝攻击者的prompt  
+> 详细算法如下图：  
+<img src="img/algorithm_in_backtranslation.png" width = "50%">
+  
+注：该方向的问题在于尽管作者表示该方法"efficient and lightweight"，其运行的速度仍然是一个问题，尤其是因加入推理过程后的大模型。
